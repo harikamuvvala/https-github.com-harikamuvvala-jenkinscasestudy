@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: apache
+  labels: apache
+spec:
+  replicas: 2
+  selector:
+    matchlabels:
+      app: apache-website
+   template:
+     metadata:
+     labels:
+       app: apache-website
+     spec:
+       containers:
+       - name: apache-website
+         image: harikabankuru/capstone2:latest
+         ports:
+         - containerPort:80
